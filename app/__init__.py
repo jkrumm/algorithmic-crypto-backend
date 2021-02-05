@@ -1,35 +1,38 @@
 import logging.config
-import settings
-from common.cache import Redis
-from flask import Flask, jsonify, current_app
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
-from route.route import register_route_blueprint
-from werkzeug.utils import import_string
+from os import environ
+
+from celery import Celery
+from dotenv import load_dotenv
+from flask import Flask
+from flask_cors import CORS
+
+from .config import config as app_config
+
+celery = Celery(__name__)
 
 
 def create_app():
-    logging.config.dictConfig(import_string("settings.LOGGING_CONFIG"))
-    app = Flask(__name__, instance_relative_config=True)
+    # loading env vars from .env file
+    load_dotenv()
+    APPLICATION_ENV = get_environment()
+    logging.config.dictConfig(app_config[APPLICATION_ENV].LOGGING)
+    app = Flask(app_config[APPLICATION_ENV].APP_NAME)
+    app.config.from_object(app_config[APPLICATION_ENV])
 
-    app.config.from_object(settings)
-    app.cache = Redis(
-        host=settings.REDIS_HOST,
-        port=settings.REDIS_PORT,
-        db=settings.REDIS_DB,
-        password=settings.REDIS_PASSWORD,
-    ).get_connection()
+    CORS(app, resources={r'/api/*': {'origins': '*'}})
 
-    Limiter(app, key_func=get_remote_address, default_limits=["50 per minute"])
+    celery.config_from_object(app.config, force=True)
+    # celery is not able to pick result_backend and hence using update
+    celery.conf.update(result_backend=app.config['RESULT_BACKEND'])
 
-    register_route_blueprint(app)
+    from .core.views import core as core_blueprint
+    app.register_blueprint(
+        core_blueprint,
+        url_prefix='/api/v1/core'
+    )
 
     return app
 
 
-app = create_app()
-
-
-@app.route("/health")
-def health_check():
-    return jsonify({"status": "ok", "cache": current_app.cache.ping()}), 200
+def get_environment():
+    return environ.get('APPLICATION_ENV') or 'development'

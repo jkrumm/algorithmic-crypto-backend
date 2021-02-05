@@ -1,8 +1,0 @@
-[run]
-omit = 
-    *__pycache__*,
-    *.vscode*,
-    *venv*,
-
-[report]
-show_missing = True

@@ -45,6 +45,7 @@ class BaseConfig(object):
     LOG_CELERY_FILE = path.join(basedir, 'log', 'celery.log')
     BOT_TELEGRAM_TOKEN = environ.get('BOT_TELEGRAM_TOKEN')
     BOT_TELEGRAM_ID = environ.get('BOT_TELEGRAM_ID')
+    DB = environ.get("DB")
     MONGO_URI = "mongodb+srv://" + environ.get("DB_USER") + ":" \
                 + environ.get("DB_PW") + "@cluster0.lhlxl.mongodb.net/" \
                 + environ.get("DB") + "?retryWrites=true&w=majority"

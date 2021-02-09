@@ -7,8 +7,6 @@ from celery.signals import after_setup_task_logger
 from app import celery, create_app
 
 app = create_app()
-global db
-db = PyMongo(app).db
 app.app_context().push()
 
 

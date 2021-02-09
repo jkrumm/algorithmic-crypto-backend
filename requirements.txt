@@ -1,9 +1,9 @@
-Flask~=1.1.2
-Werkzeug~=1.0.1
+Flask
+Werkzeug
 autopep8
 flake8
 ipython
-celery==4.4.7
+celery>5
 redis
 flask-cors
 python-dotenv
@@ -14,3 +14,4 @@ requests
 ccxt
 pymongo
 dnspython
+pandas

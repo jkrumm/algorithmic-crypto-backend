@@ -1,7 +1,7 @@
 from flask import Blueprint, current_app, request
 from werkzeug.local import LocalProxy
 
-from app.utils import telegram_bot, backoff
+from app.utils import telegram_bot
 from authentication import require_appkey
 from app.config import BaseConfig
 
@@ -47,7 +47,13 @@ def signal():
 
 @core.route('/test', methods=['GET'])
 def test():
-    test_task.delay()
+    try:
+        test_task.delay()
+    except Exception as exc:
+        print(exc)
+        telegram_bot("🔴 SIGNAL",
+                     "GET /signal endpoint | failed starting signal_task")
+        telegram_bot("🔴 EXCEPTION", str(exc))
     logger.info('core test route hit')
     telegram_bot("🟢 TEST", "GET /test endpoint core")
     return 'Congratulations! Your core-app test route is running!'

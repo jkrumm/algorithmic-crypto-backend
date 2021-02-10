@@ -3,7 +3,6 @@ from pandas import DataFrame
 from flask import current_app
 from werkzeug.local import LocalProxy
 from app.config import BaseConfig
-from celery.utils.log import get_task_logger
 
 from app import celery
 

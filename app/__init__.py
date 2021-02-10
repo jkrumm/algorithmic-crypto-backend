@@ -14,11 +14,7 @@ CELERY_TASK_LIST = [
     'core.tasks.test',
     'core.tasks.signal',
     'allocate.tasks.allocate',
-    'allocate.tasks.get_signals',
-    'allocate.tasks.allocate_signals',
-    'allocate.tasks.get_allocation',
-    'allocate.tasks.change_allocation',
-    'allocate.tasks.post_allocation'
+    'trade.tasks.trade'
 ]
 
 
@@ -46,6 +42,11 @@ def create_app():
     app.register_blueprint(
         allocate_blueprint,
         url_prefix='/api/v1/allocate'
+    )
+    from app.trade.views import trade as trade_blueprint
+    app.register_blueprint(
+        trade_blueprint,
+        url_prefix='/api/v1/trade'
     )
 
     return app

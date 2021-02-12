@@ -1,5 +1,4 @@
 import logging
-from flask_pymongo import PyMongo
 
 from celery.app.log import TaskFormatter
 from celery.signals import after_setup_task_logger

@@ -1,0 +1,7 @@
+.git/
+.idea/
+.editorconfig
+public/
+.env
+.dockerignore
+docker-compose.override.yml

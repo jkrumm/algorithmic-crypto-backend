@@ -6,6 +6,8 @@ services:
   web:
     build: .
     command: python /code/run.py
+    env_file:
+      - ".env"
     volumes:
       - .:/code
     ports:
@@ -17,7 +19,7 @@ services:
     build: .
     command: celery -A celery_worker.celery worker -l info
     env_file:
-        - ".env"
+      - ".env"
     volumes:
       - .:/code
     depends_on:

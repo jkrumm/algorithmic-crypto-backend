@@ -25,15 +25,17 @@ kraken = ccxt.kraken({
 
 
 def get_db():
-    return pymongo.MongoClient(
+    db = pymongo.MongoClient(
         "mongodb+srv://" + environ.get("DB_USER") + ":" + environ.get("DB_PW")
         + "@cluster0.lhlxl.mongodb.net/<" + environ.get("DB") \
         + ">?retryWrites=true&w=majority")
+    return db[environ.get("DB")]
 
 
 class BaseConfig(object):
     ''' Base config class. '''
 
+    APPLICATION_ENV = environ.get('APPLICATION_ENV')
     APP_NAME = environ.get('APP_NAME') or 'algorithmic-crypto-backend'
     ORIGINS = ['*']
     EMAIL_CHARSET = 'UTF-8'

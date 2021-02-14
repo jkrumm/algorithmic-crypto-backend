@@ -10,4 +10,4 @@ RUN pip install -r /code/requirements.txt --no-cache-dir
 COPY . /code
 WORKDIR /code
 
-EXPOSE 5000
+EXPOSE 8000

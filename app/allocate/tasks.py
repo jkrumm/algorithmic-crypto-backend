@@ -10,7 +10,7 @@ from app import celery
 
 logger = get_task_logger(__name__)
 
-db = get_db()[BaseConfig.DB]
+db = get_db()
 
 
 @celery.task(bind=True, base=BaseTask, name='allocate.tasks.allocate',

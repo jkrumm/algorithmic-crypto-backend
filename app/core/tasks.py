@@ -9,7 +9,7 @@ from app.allocate.tasks import allocate_btc_eth_task
 
 logger = get_task_logger(__name__)
 
-db = get_db()['dev']
+db = get_db()
 
 
 @celery.task(base=BaseTask, name='core.tasks.test',

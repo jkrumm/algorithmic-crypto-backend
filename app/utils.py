@@ -36,9 +36,10 @@ def backoff(attempts):
 def telegram_bot(task, msg):
     logger.info('running telegram_bot util : ' + task + " | " + msg)
     requests.get(
-        'https://api.telegram.org/bot' + BaseConfig.BOT_TELEGRAM_TOKEN \
-        + '/sendMessage?chat_id=' + BaseConfig.BOT_TELEGRAM_ID \
-        + '&parse_mode=html&text=' + "<b>" + task + "</b>   <i>" + msg + "</i>")
+        'https://api.telegram.org/bot' + BaseConfig.BOT_TELEGRAM_TOKEN
+        + '/sendMessage?chat_id=' + BaseConfig.BOT_TELEGRAM_ID
+        + '&parse_mode=html&text=' + "<b>" + task + " | "
+        + BaseConfig.APPLICATION_ENV + "</b>\n<i>" + msg + "</i>")
 
 
 def get_df(cursor):

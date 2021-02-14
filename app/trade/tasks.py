@@ -5,12 +5,12 @@ from datetime import datetime
 from celery.utils.log import get_task_logger
 
 from app.utils import BaseTask, backoff, telegram_bot
-from app.config import get_db, BaseConfig
+from app.config import get_db
 from app import celery
 
 logger = get_task_logger(__name__)
 
-db = get_db()[BaseConfig.DB]
+db = get_db()
 
 
 @celery.task(bind=True, base=BaseTask, name='trade.tasks.trade',

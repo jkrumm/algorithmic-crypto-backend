@@ -11,7 +11,7 @@ services:
     volumes:
       - .:/code
     ports:
-      - "5000:5000"
+      - "8000:8000"
     depends_on:
       - redis
   celery:

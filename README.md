@@ -52,7 +52,7 @@ $ pipenv install -d
 - Celery worker can be started with following command
 ```sh
 # run following command in a separate terminal
-$ celery worker -A celery_worker.celery -l=info  
+$ celery worker -A celery_worker.celery -l=info
 # (append `--pool=solo` for windows)
 ```
 
@@ -75,15 +75,15 @@ Includes preconfigured packages to kick start flask app by just setting appropri
   Test if this app has been installed correctly and it is working via following curl commands (or use in Postman)
 - Check if the app is running via `status` API
 ```shell
-$ curl --location --request GET 'http://localhost:5000/status'
+$ curl --location --request GET 'http://localhost:8000/status'
 ```
 - Check if core app API and celery task is working via
 ```shell
-$ curl --location --request GET 'http://localhost:5000/api/v1/core/test'
+$ curl --location --request GET 'http://localhost:8000/api/v1/core/test'
 ```
 - Check if authorization is working via (change `API Key` as per you `.env`)
 ```shell
-$ curl --location --request GET 'http://localhost:5000/api/v1/core/restricted' --header 'x-api-key: 436236939443955C11494D448451F'
+$ curl --location --request GET 'http://localhost:8000/api/v1/core/restricted' --header 'x-api-key: 436236939443955C11494D448451F'
 ```
 
 # License

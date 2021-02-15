@@ -39,7 +39,7 @@ def allocate_btc_eth_task(self):
              "time": datetime.now()}
         if s["ETH/BTC"] == "buy" and s["ETH/USD"] == "buy":
             a["ETH"] = 100
-        elif s["BTC/USD"] == "buy":
+        elif s["ETH/BTC"] == "sell" and s["BTC/USD"] == "buy":
             a["BTC"] = 100
         else:
             a["USD"] = 100

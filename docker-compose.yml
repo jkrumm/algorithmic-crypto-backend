@@ -5,13 +5,13 @@ services:
     image: "redis:alpine"
   web:
     build: .
-    command: python /code/run.py
+    command: gunicorn --bind 0.0.0.0:5000 run:app
     env_file:
       - ".env"
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "5000:5000"
     depends_on:
       - redis
   celery:

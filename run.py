@@ -9,11 +9,11 @@ from six.moves.urllib.parse import urlencode
 app = create_app()
 
 
-@app.errorhandler(Exception)
-def handle_auth_error(ex):
-    response = jsonify(message=str(ex))
-    response.status_code = (ex.code if isinstance(ex, HTTPException) else 500)
-    return response
+# @app.errorhandler(Exception)
+# def handle_auth_error(ex):
+#     response = jsonify(message=str(ex))
+#     response.status_code = (ex.code if isinstance(ex, HTTPException) else 500)
+#     return response
 
 
 oauth = OAuth(app)

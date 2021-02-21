@@ -3,11 +3,14 @@ import requests
 from pandas import DataFrame
 from flask import current_app, session, redirect
 from werkzeug.local import LocalProxy
+from cryptography.fernet import Fernet
 from app.config import BaseConfig
 
 from app import celery
 
 logger = LocalProxy(lambda: current_app.logger)
+
+cipher_suite = Fernet(BaseConfig.FERNET_KEY)
 
 
 def requires_auth(f):
@@ -19,6 +22,14 @@ def requires_auth(f):
         return f(*args, **kwargs)
 
     return decorated
+
+
+def encrypt(secret):
+    return cipher_suite.encrypt(secret.encode()).decode()
+
+
+def decrypt(token):
+    return cipher_suite.decrypt(token.encode()).decode()
 
 
 class BaseTask(celery.Task):

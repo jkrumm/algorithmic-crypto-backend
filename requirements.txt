@@ -16,3 +16,4 @@ pymongo
 gunicorn
 authlib
 six
+cryptography

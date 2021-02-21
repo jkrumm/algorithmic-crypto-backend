@@ -1,7 +1,5 @@
 from os import environ, path
-
 from dotenv import load_dotenv
-
 import ccxt
 import json
 import pymongo
@@ -53,6 +51,7 @@ class BaseConfig(object):
     AUTH0_DOMAIN = environ.get('AUTH0_DOMAIN')
     AUTH0_CLIENT_SECRET = environ.get('AUTH0_CLIENT_SECRET')
     AUTH0_CALLBACK_URL = environ.get('AUTH0_CALLBACK_URL')
+    FERNET_KEY = environ.get('FERNET')
     MONGO_URI = "mongodb+srv://" + environ.get("DB_USER") + ":" \
                 + environ.get("DB_PW") + "@cluster0.lhlxl.mongodb.net/" \
                 + environ.get("DB") + "?retryWrites=true&w=majority"

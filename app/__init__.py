@@ -25,6 +25,7 @@ def create_app():
     logging.config.dictConfig(app_config[APPLICATION_ENV].LOGGING)
     app = Flask(app_config[APPLICATION_ENV].APP_NAME)
     app.config.from_object(app_config[APPLICATION_ENV])
+    # app.secret_key = app_config.BaseConfig.SECRET_KEY
 
     CORS(app, resources={r'/api/*': {'origins': '*'}})
 
@@ -32,6 +33,9 @@ def create_app():
     celery.config_from_object(app.config, force=True)
     # celery is not able to pick result_backend and hence using update
     celery.conf.update(result_backend=app.config['RESULT_BACKEND'])
+
+    from app.public.views import public as public_blueprint
+    app.register_blueprint(public_blueprint)
 
     from app.core.views import core as core_blueprint
     app.register_blueprint(

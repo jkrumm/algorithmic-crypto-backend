@@ -37,6 +37,7 @@ class BaseConfig(object):
 
     APPLICATION_ENV = environ.get('APPLICATION_ENV')
     APP_NAME = environ.get('APP_NAME') or 'algorithmic-crypto-backend'
+    SECRET_KEY = environ.get('SECRET_KEY')
     ORIGINS = ['*']
     EMAIL_CHARSET = 'UTF-8'
     API_KEY = environ.get('API_KEY')
@@ -48,6 +49,10 @@ class BaseConfig(object):
     BOT_TELEGRAM_TOKEN = environ.get('BOT_TELEGRAM_TOKEN')
     BOT_TELEGRAM_ID = environ.get('BOT_TELEGRAM_ID')
     DB = environ.get("DB")
+    AUTH0_CLIENT_ID = environ.get('AUTH0_CLIENT_ID')
+    AUTH0_DOMAIN = environ.get('AUTH0_DOMAIN')
+    AUTH0_CLIENT_SECRET = environ.get('AUTH0_CLIENT_SECRET')
+    AUTH0_CALLBACK_URL = environ.get('AUTH0_CALLBACK_URL')
     MONGO_URI = "mongodb+srv://" + environ.get("DB_USER") + ":" \
                 + environ.get("DB_PW") + "@cluster0.lhlxl.mongodb.net/" \
                 + environ.get("DB") + "?retryWrites=true&w=majority"

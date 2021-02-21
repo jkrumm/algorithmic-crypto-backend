@@ -1,12 +1,24 @@
+from functools import wraps
 import requests
 from pandas import DataFrame
-from flask import current_app
+from flask import current_app, session, redirect
 from werkzeug.local import LocalProxy
 from app.config import BaseConfig
 
 from app import celery
 
 logger = LocalProxy(lambda: current_app.logger)
+
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'profile' not in session:
+            # Redirect to Login page here
+            return redirect('/')
+        return f(*args, **kwargs)
+
+    return decorated
 
 
 class BaseTask(celery.Task):

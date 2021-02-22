@@ -4,6 +4,7 @@ from werkzeug.local import LocalProxy
 
 from app.utils import requires_auth
 from authentication import require_appkey
+from app.public.forms import ExchangeConnection
 
 public = Blueprint('public', __name__, template_folder='templates')
 logger = LocalProxy(lambda: current_app.logger)
@@ -23,6 +24,17 @@ def home():
 @requires_auth
 def dashboard():
     return render_template('dashboard.html',
+                           userinfo=session['profile'],
+                           userinfo_pretty=json.dumps(session['jwt_payload'],
+                                                      indent=4))
+
+
+@public.route('/setup')
+@requires_auth
+def setup():
+    form = ExchangeConnection()
+    return render_template('setup.html',
+                           form=form,
                            userinfo=session['profile'],
                            userinfo_pretty=json.dumps(session['jwt_payload'],
                                                       indent=4))

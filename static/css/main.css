@@ -325,10 +325,15 @@ td.red {
 
 /* } */
 
-nav {
-    border-bottom: 0 !important;
+.navbar {
+    border-bottom: 0;
     border-top: 0 !important;
     width: 100%;
+    padding: 0 !important;
+}
+
+nav.navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, .6) !important;
 }
 
 nav .navbar-brand {
@@ -340,6 +345,10 @@ nav .navbar-brand img {
     width: 45px;
     margin-right: 20px;
     margin-left: 20px;
+}
+
+ul.navbar-nav {
+    flex-grow: 1;
 }
 
 @media only screen and (min-width: 992px) {
@@ -358,7 +367,7 @@ nav .navbar-brand img {
 
     nav a.nav-link {
         text-transform: uppercase;
-        min-width: 135px;
+        min-width: 100%;
         display: inline-block;
         text-align: center;
     }

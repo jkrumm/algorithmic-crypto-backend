@@ -1,4 +1,5 @@
 Flask~=1.1.2
+flask
 Werkzeug~=1.0.1
 autopep8
 flake8

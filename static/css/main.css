@@ -18,7 +18,7 @@ html {
 }
 
 html * {
-    font-family: Bender;
+    font-family: Bender, "DIN", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -39,6 +39,11 @@ body {
 
 a {
     cursor: pointer;
+    color: white !important;
+}
+
+a:hover {
+    color: white !important;
 }
 
 ::selection {
@@ -332,7 +337,7 @@ td.red {
     padding: 0 !important;
 }
 
-nav.navbar {
+.navbar.navbar-default.navbar-fixed-top {
     border-bottom: 1px solid rgba(0, 0, 0, .6) !important;
 }
 

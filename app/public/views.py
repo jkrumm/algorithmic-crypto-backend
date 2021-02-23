@@ -1,10 +1,13 @@
 import json
-from flask import Blueprint, current_app, render_template, session
+import ccxt
+from flask import Blueprint, current_app, render_template, session, request, \
+    redirect, url_for
 from werkzeug.local import LocalProxy
 
-from app.utils import requires_auth
+from app.utils import requires_auth, encrypt, change_user_app_metadata
 from authentication import require_appkey
 from app.public.forms import ExchangeConnection
+from app.config import BaseConfig
 
 public = Blueprint('public', __name__, template_folder='templates')
 logger = LocalProxy(lambda: current_app.logger)
@@ -29,15 +32,42 @@ def dashboard():
                                                       indent=4))
 
 
-@public.route('/setup')
+@public.route('/setup', methods=['GET', 'POST'])
 @requires_auth
 def setup():
-    form = ExchangeConnection()
-    return render_template('setup.html',
-                           form=form,
-                           userinfo=session['profile'],
-                           userinfo_pretty=json.dumps(session['jwt_payload'],
-                                                      indent=4))
+    form = ExchangeConnection(request.form)
+    if request.method == 'POST' and form.validate_on_submit():
+        exchange_connection = {
+            "exchange": form.exchange.data,
+            "bot": form.bot.data,
+            "api_key": form.api_key.data,
+            "api_secret": encrypt(form.api_secret.data)
+        }
+        try:
+            kraken = ccxt.kraken({
+                'apiKey': form.api_key.data,
+                'secret': form.api_secret.data,
+                'enableRateLimit': True,
+                "timeout": 100000,
+                'options': {
+                    'fetchMinOrderAmounts': False
+                }
+            })
+            kraken.fetch_balance()
+            logger.info(str(exchange_connection))
+            logger.info(session['profile']['user_id'])
+            change_user_app_metadata(session['profile']['user_id'], exchange_connection)
+            return redirect(url_for('public.dashboard'))
+        except:
+            return render_template(
+                'setup.html', form=form,
+                error="Invalid " + form.exchange.data + " api credentials.",
+                userinfo=session['profile'],
+                userinfo_pretty=json.dumps(session['jwt_payload'], indent=4))
+    else:
+        return render_template(
+            'setup.html', form=form, error=None, userinfo=session['profile'],
+            userinfo_pretty=json.dumps(session['jwt_payload'], indent=4))
 
 
 @public.route('/test', methods=['GET'])

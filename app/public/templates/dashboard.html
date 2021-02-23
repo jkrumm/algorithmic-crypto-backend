@@ -105,6 +105,7 @@
     <div class="logged-in-box auth0-box logged-in">
         <img class="avatar" src="{{ userinfo['picture'] }}"/>
         <h2>Welcome {{ userinfo['name'] }}</h2>
+        <pre>{{ userinfo }}</pre>
         <pre>{{ userinfo_pretty }}</pre>
         <a class="btn btn-primary btn-lg btn-logout btn-block" href="{{ url_for('public.setup') }}">
             Setup exchange connection

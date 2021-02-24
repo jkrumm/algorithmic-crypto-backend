@@ -1,23 +1,23 @@
 @font-face {
     font-family: BenderBold;
     src: url("blenderpro-bold-webfont.woff");
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
     font-family: Bender;
     src: url("blenderpro-medium-webfont.woff");
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
     font-family: DIN;
     src: url("DINNextLTW04-Light.woff");
-    font-display: swap;
+    font-display: block;
 }
 
 body {
-    font-family: DIN, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: DIN, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 18px;
     color: #394b59;
@@ -34,14 +34,18 @@ p.small {
     line-height: 18px;
 }
 
+p.center {
+    text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
-    font-family: Bender, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Bender, "Helvetica Neue", sans-serif;
     color: rgb(16, 17, 19);
 }
 
 h1 {
-    font-family: BenderBold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: BenderBold, "Helvetica Neue", sans-serif;
     color: #fff;
     margin: 0 0 10px 0;
     font-size: 75px;
@@ -59,6 +63,17 @@ h3 {
     font-size: 18px;
     line-height: 23px;
     margin: 5px 0 12px 0;
+}
+
+.flexbox {
+    display: flex;
+    text-align: center;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.flexbox > div {
+    flex: 1;
 }
 
 @media only screen and (min-width: 1050px) {
@@ -105,7 +120,7 @@ h3 {
 
 header {
     position: relative;
-    margin-bottom: 120px;
+    margin-bottom: 150px;
     height: 885px;
     overflow: hidden;
     z-index: 4;
@@ -117,14 +132,15 @@ header:before {
     position: absolute;
     right: 0;
     left: 0;
-    bottom: 0;
+    top: 0;
     height: 100%;
     z-index: 0;
     background-image: url("../img/header.jpg");
     background-position: center top;
-    background-size: 100% auto;
+    background-size: auto 950px;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    transition: background-image 20s;
 }
 
 header:after {
@@ -165,43 +181,47 @@ main {
 }
 
 .intro {
-    display: flex;
-    margin-bottom: 150px;
+    margin-bottom: 130px;
 }
 
 .intro > div {
-    flex: 1 1 0;
     text-align: center;
     padding: 5px 10px;
-}
-
-.intro .intro_action {
-    flex: 2 1 0;
 }
 
 .intro h3 {
     margin-top: 0;
 }
 
-.intro p {
+.intro .slick-responsive p {
     margin-bottom: 0;
+    font-size: 120%;
+}
+
+.intro .flexbox {
+    margin: 20px 30px 0 30px;
+}
+
+.intro .flexbox > div {
+    margin-top: 100px;
+    padding: 0 30px;
 }
 
 .action.bp3-button.bp3-outlined {
-    border: 2px solid rgba(13, 128, 80, 0.6);
+    border: 2px solid rgba(16, 107, 163, 0.6);
     padding: 11px 21px;
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .action h3 {
     margin: 0;
-    color: #0d8050;
+    color: #106ba3;
 }
 
 .welcome {
     position: relative;
     overflow: hidden;
-    height: 660px;
+    height: 750px;
 }
 
 .welcome:before {
@@ -215,8 +235,8 @@ main {
     background-image: url("../img/center.jpeg");
     background-position: center top;
     background-size: 100% auto;
-    -webkit-filter: saturate(0.6) brightness(1.15);
-    filter: saturate(0.6) brightness(1.15);
+    -webkit-filter: saturate(0.6) brightness(1.4);
+    filter: saturate(0.6) brightness(1.4);
     z-index: 0;
 }
 
@@ -229,16 +249,16 @@ main {
     bottom: 0;
     height: 100%;
     z-index: 1;
-    opacity: 0.8;
-    background: rgb(71, 56, 16);
-    background: linear-gradient(0deg, rgba(71, 56, 16, 0) 0%, rgba(71, 56, 16, 0.267927239255077) 100%);
+    opacity: 0.5;
+background: rgb(124,95,17);
+background: linear-gradient(180deg, rgba(124,95,17,1) 0%, rgba(124,95,17,0.35) 100%);
 }
 
 .welcome > div {
     position: relative;
     display: block;
     z-index: 2;
-    top: 37%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
@@ -254,13 +274,33 @@ main {
     color: #fff;
 }
 
+.welcome .exchanges {
+    margin-top: 140px;
+}
+
+.welcome .exchanges img {
+    width: auto;
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.welcome .exchanges img:nth-of-type(2) {
+    position: relative;
+    top: 6px;
+    margin: 0 70px;
+}
+
+.welcome .exchanges img:nth-of-type(3) {
+    position: relative;
+    top: -2px;
+}
+
 .bots {
-    margin: 170px 0;
+    margin: 115px 0 130px 0;
 }
 
 .bots > div {
     display: flex;
-    margin-bottom: 170px;
 }
 
 .bots > div > div {
@@ -281,7 +321,7 @@ main {
 }
 
 .bots table {
-    width: 190px;
+    width: 220px;
     margin: 0 auto;
 }
 
@@ -304,9 +344,119 @@ table tr.border-bottom {
     border-bottom: 1px solid rgba(147, 147, 147, 0.6);
 }
 
+#features {
+    background-color: #f5f8fa;
+    border-top: 1px solid #939393;
+    border-bottom: 1px solid #939393;
+    padding: 70px 0 85px 0;
+    margin-bottom: 85px;
+}
+
+.product {
+    margin-bottom: 70px;
+    padding: 0 30px;
+}
+
+.product > div {
+    padding: 0 20px;
+}
+
+.ui {
+
+}
+
+.ui img {
+    display: block;
+    width: calc(100% - 120px);
+    margin: 0 auto;
+}
+
+#pricing > p {
+    margin: -15px 0 50px 0;
+}
+
+.pricing {
+    margin: 0 30px 70px 30px;
+}
+
+.pricing > div {
+    padding: 0 20px;
+    flex: 1;
+}
+
+.pricing h3 {
+    height: 60px;
+}
+
+.pricing .price {
+    min-height: 140px;
+}
+
+.pricing #slider {
+    width: 80%;
+    margin: 25px auto 10px auto;
+}
+
+.pricing #slider-value {
+    margin-bottom: 50px;
+}
+
+.pricing span.big {
+    font-family: Bender, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 60px;
+}
+
+.pricing span.small {
+    margin-left: 5px;
+}
+
+.pricing .payment {
+    display: flex;
+    justify-content: center;
+}
+
+.pricing p.small {
+    margin: 40px 0 20px 0;
+    min-height: 50px;
+}
+
+.pricing .payment > img {
+    max-width: 30%;
+    height: 47px;
+    padding: 0 10px;
+    -webkit-filter: brightness(0) saturate(0) opacity(0.25);
+    filter: brightness(0) saturate(0) opacity(0.25);
+    -webkit-transition: 0.25s -webkit-filter linear;
+    -moz-transition: 0.25s -moz-filter linear;
+    -moz-transition: 0.25s filter linear;
+    -ms-transition: 0.25s -ms-filter linear;
+    -o-transition: 0.25s -o-filter linear;
+    transition: 0.25s filter linear, 0.25s -webkit-filter linear;
+    object-fit: scale-down;
+}
+
+img.coinbase {
+    max-width: 35% !important;
+    position: relative;
+    top: -3px;
+    margin-bottom: 3px;
+}
+
+.pricing > div:hover .payment > img {
+    -webkit-filter: brightness(1) saturate(1) opacity(1);
+    filter: brightness(1) saturate(1) opacity(1);
+}
+
+#pricing .action {
+    display: block;
+    margin: 0 auto 100px auto;
+    border: 3px solid rgba(16, 107, 163, 0.6);
+    padding: 15px 30px;
+}
+
 footer {
     position: relative;
-    height: 770px;
+    height: 420px;
     overflow: hidden;
 }
 
@@ -318,23 +468,68 @@ footer:before {
     left: 0;
     bottom: 0;
     height: 100%;
-    z-index: 0;
-    background-image: url("../img/footer.jpeg");
-    background-position: center 480px;
-    background-size: 100% auto;
+    z-index: -2;
+    background-image: url("../img/beach.jpg");
+    background-position: center -180px;
+    background-size: 1400px auto;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
-.product {
-    margin-bottom: 70px;
+footer h1 {
+    font-size: 110px;
+    line-height: 110px;
+    text-align: center;
+    position: relative;
+    top: calc(50% + 70px);
+    transform: translateY(-50%);
 }
 
-.ui {
-    margin-bottom: 170px;
+footer .bottom {
+    z-index: -1;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    width: calc(100% - 50px);
+    max-width: 1350px;
+    transform: translateX(-50%);
 }
 
-.ui img {
-    display: block;
-    margin: 0 auto;
+footer .bottom > div:first-of-type {
+    text-align: left;
+}
+
+footer .bottom > div:last-of-type {
+    text-align: right;
+}
+
+footer p,
+footer a {
+    color: #fff;
+    margin: 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+footer:hover p,
+footer:hover a {
+    opacity: 1;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+footer .bottom a {
+    margin: 0 7px;
+}
+
+footer .bottom a:last-of-type {
+    margin-right: 0;
 }

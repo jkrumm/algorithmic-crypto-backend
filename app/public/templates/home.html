@@ -31,6 +31,19 @@
     <meta name="msapplication-TileImage" content="/static/icon/mstile-144x144.png">
     <meta name="theme-color" content="#333333">
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4QGVCZDB9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-Y4QGVCZDB9');
+    </script>
 </head>
 <body id="container">
 <!-- Wrap all page content here -->
@@ -71,9 +84,13 @@
                 </a>
             </div>
             <div class="bp3-navbar-group last-nav">
-                <a href="/login"><button class="bp3-button bp3-minimal">Register</button></a>
+                <a href="/login">
+                    <button class="bp3-button bp3-minimal">Sign Up</button>
+                </a>
                 <span class="bp3-navbar-divider"></span>
-                <a href="/login"><button class="bp3-button bp3-minimal">Login</button></a>
+                <a href="/login">
+                    <button class="bp3-button bp3-minimal">Login</button>
+                </a>
             </div>
         </div>
     </nav>
@@ -118,20 +135,21 @@
                 <div>
                     <p>80% of traders aren't profitable. 80% of all trading volume comes from algorithms.</p>
                     <p>
-                        You're spending time and effort to research for trade setups? You miss trades or get
+                        You are spending time and effort to research for trade setups? You miss trades or get
                         stopped out by a sudden drop? Automate your trading and become much more profitable!<br>
                         Just like investment funds have been doing for years.
                     </p>
-                    <button class="action bp3-button bp3-large bp3-outlined bp3-minimal bp3-intent-primary"
-                            href="/login">
-                        <h3>Connect Your Exchange</h3>
-                    </button>
-                    <div class="exchanges">
-                        <img loading="lazy" src="/static/img/kraken.png" alt="Kraken" height="31">
-                        <img loading="lazy" src="/static/img/binance.png" alt="Binance" height="45">
-                        <img loading="lazy" src="/static/img/coinbase.png" alt="Coinbase" height="38">
-                    </div>
+                    <a href="/login">
+                        <button class="action bp3-button bp3-large bp3-outlined bp3-minimal">
+                            <h3>Connect Your Exchange</h3>
+                        </button>
+                    </a>
                 </div>
+            </div>
+            <div class="exchanges">
+                <img loading="lazy" src="/static/img/kraken.png" alt="Kraken" height="31">
+                <img loading="lazy" src="/static/img/binance.png" alt="Binance" height="45">
+                <img loading="lazy" src="/static/img/coinbase.png" alt="Coinbase" height="38">
             </div>
         </section>
         <section id="algorithms" class="bots">
@@ -232,43 +250,45 @@
             <h2>Pricing</h2>
             <p class="center">50% early bird sale for the first 100 customers! All plans include entire access.</p>
             <div class="flexbox pricing">
-                <div>
+                <div><a href="/login">
                     <div class="bp3-card bp3-elevation-2 bp3-interactive">
                         <h3>Monthly Subscription</h3>
                         <div class="price"><span class="big">$ 15</span><span class="small">/month</span></div>
-                        <p class="small">Credit Card, PayPal, Apple Pay, Google Pay, SEPA, Alipay, ...</p>
-                        <div class="payment">
-                            <img src="/static/img/stripe.svg" alt="Stripe" loading="lazy" class="stripe">
-                            <img src="/static/img/PayPal.svg" alt="PayPal" loading="lazy" class="paypal">
-                        </div>
+                    </div>
+                </a>
+                    <p class="tiny">Credit Card, PayPal, Apple Pay, Google Pay, Alipay, ...</p>
+                    <div class="payment">
+                        <img src="/static/img/stripe.svg" alt="Stripe" loading="lazy" class="stripe">
+                        <img src="/static/img/PayPal.svg" alt="PayPal" loading="lazy" class="paypal">
                     </div>
                 </div>
                 <div>
-                    <div class="bp3-card bp3-elevation-2 bp3-interactive">
-                        <h3>Cryptocurrency Payment</h3>
-                        <div class="price">
-                            <span class="big">$</span>
-                            <span id="slider-value-price" class="big">45</span>
-                            <div id="slider"></div>
-                            <p id="slider-value"></p>
+                    <a href="/login">
+                        <div class="bp3-card bp3-elevation-2 bp3-interactive">
+                            <h3>Cryptocurrency Payment</h3>
+                            <div class="price">
+                                <span class="big">$</span>
+                                <span id="slider-value-price" class="big">45</span></div>
                         </div>
-                        <p class="small">BTC, ETH, LTC, ...</p>
-                        <div class="payment">
-                            <img src="/static/img/Coinbase.svg" alt="Coinbase" loading="lazy" class="coinbase">
-                        </div>
+                    </a>
+                    <div id="slider"></div>
+                    <p id="slider-value"></p>
+                    <div class="payment">
+                        <img src="/static/img/Coinbase.svg" alt="Coinbase" loading="lazy" class="coinbase">
                     </div>
                 </div>
-                <div>
+                <div><a href="/login">
                     <div class="bp3-card bp3-elevation-2 bp3-interactive">
                         <h3>Lifetime access</h3>
                         <div class="price"><span class="big">$ 500</span></div>
-                        <p class="small">Credit Card, Debit Card, PayPal, Apple Pay, SEPA, Alipay, Google Pay, BTC, ETH,
-                            LTC, ...</p>
-                        <div class="payment">
-                            <img src="/static/img/stripe.svg" alt="Stripe" loading="lazy" class="stripe">
-                            <img src="/static/img/PayPal.svg" alt="PayPal" loading="lazy" class="paypal">
-                            <img src="/static/img/Coinbase.svg" alt="Coinbase" loading="lazy" class="coinbase">
-                        </div>
+                    </div>
+                </a>
+                    <p class="tiny">Credit Card, Debit Card, PayPal, Apple Pay, Google Pay, Alipay, BTC, ETH,
+                        LTC, ...</p>
+                    <div class="payment">
+                        <img src="/static/img/stripe.svg" alt="Stripe" loading="lazy" class="stripe">
+                        <img src="/static/img/PayPal.svg" alt="PayPal" loading="lazy" class="paypal">
+                        <img src="/static/img/Coinbase.svg" alt="Coinbase" loading="lazy" class="coinbase">
                     </div>
                 </div>
             </div>

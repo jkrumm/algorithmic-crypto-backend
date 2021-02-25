@@ -12,13 +12,10 @@ $(function () {
     var top = navbar.position().top;
     $(window).scroll(function () {
         var windowpos = $(window).scrollTop();
-        console.log(windowpos)
         var introTop = intro.position().top + 935;
         var algorithmsTop = algorithms.position().top + 930;
-        console.log(algorithmsTop)
         var featuresTop = features.position().top + 950;
-        var pricingTop = pricing.position().top + 900;
-        console.log(pricingTop)
+        var pricingTop = pricing.position().top + 800;
 
         // if win >= navbar and not already a sticky
         if (windowpos >= top && !navbar.hasClass("navbar-fixed-top")) {
@@ -134,9 +131,6 @@ $(function () {
                     slidesToScroll: 1
                 }
             }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
         ]
     });
 });

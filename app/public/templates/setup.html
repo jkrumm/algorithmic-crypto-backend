@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Setup{% endblock %}
+{% block content %}
+    <form method="post" class="form mx-auto" style="max-width: 500px;">
+        <h3 class="form-heading">Submit exchange connection
+            <a href="{{ url_for('public.dashboard') }}" title="Back to dashboard">
+                <i class="fa fa-home float-right"></i>
+            </a>
+        </h3>
+        {% if error != None %}
+            <div class="alert alert-dismissible alert-warning" id="warning-message">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <div class="flex">
+                    <div>
+                        <img src="/static/img/flip_phone.png" alt="Flip phone to landscape">
+                    </div>
+                    <div>
+                        <p class="mb-0">{{ error }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {{ form.csrf_token }}
+        {{ form.exchange(class_ = 'form-control mb-3', placeholder = form.exchange.label.text, required = true) }}
+        {{ form.bot(class_ = 'form-control mb-3', placeholder = form.bot.label.text, required = true) }}
+        {{ form.api_key(class_ = 'form-control first-input mb-3', placeholder = form.api_key.label.text, required = true, autofocus = true) }}
+        {{ form.api_secret(class_ = 'form-control last-input mb-3', placeholder = form.api_secret.label.text, required = true) }}
+        <input type="submit" value="Submit exchange connection" class="btn btn-primary btn-lg btn-block">
+    </form>
+{% endblock %}

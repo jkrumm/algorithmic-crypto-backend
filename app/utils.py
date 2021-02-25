@@ -1,12 +1,55 @@
+from functools import wraps
 import requests
+import json
 from pandas import DataFrame
-from flask import current_app
+from flask import current_app, session, redirect
 from werkzeug.local import LocalProxy
+from cryptography.fernet import Fernet
 from app.config import BaseConfig
+
+import http.client
 
 from app import celery
 
 logger = LocalProxy(lambda: current_app.logger)
+
+cipher_suite = Fernet(BaseConfig.FERNET_KEY)
+
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'profile' not in session:
+            # Redirect to Login page here
+            return redirect('/')
+        return f(*args, **kwargs)
+
+    return decorated
+
+
+def encrypt(secret):
+    return cipher_suite.encrypt(secret.encode()).decode()
+
+
+def decrypt(token):
+    return cipher_suite.decrypt(token.encode()).decode()
+
+
+def change_user_app_metadata(user_id, app_metadata):
+    conn = http.client.HTTPSConnection(BaseConfig.AUTH0_DOMAIN)
+    payload = json.dumps({
+        "app_metadata": app_metadata
+    })
+    headers = {
+        'authorization': BaseConfig.AUTH0_CLIENT_SECRET,
+        'content-type': "application/json"
+    }
+
+    conn.request("PATCH", "/api/v2/users/" + user_id, payload, headers)
+
+    res = conn.getresponse()
+    data = res.read()
+    logger.info(data.decode("utf-8"))
 
 
 class BaseTask(celery.Task):

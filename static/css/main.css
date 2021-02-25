@@ -1,0 +1,494 @@
+/**
+ * @file
+ * Main stylesheet file.
+ */
+
+
+/*****************************************************************************
+ * Main elements
+ ****************************************************************************/
+html {
+    overflow-y: scroll;
+}
+
+@font-face {
+    font-family: Bender;
+    src: url("Blender-medium-webfont.woff");
+    font-display: swap;
+}
+
+html * {
+    font-family: Bender, "DIN", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+@media only screen and (min-width: 670px) {
+    html * {
+        /* font-size: 115%; */
+    }
+
+    body {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+}
+
+a {
+    cursor: pointer;
+    color: white !important;
+}
+
+a:hover {
+    color: white !important;
+}
+
+::selection {
+    background: #555;
+    color: #FFF;
+}
+
+::-moz-selection {
+    background: #555;
+    color: #FFF;
+}
+
+::-webkit-selection {
+    background: #555;
+    color: #FFF;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+#warning-message {
+    display: none;
+    width: calc(100% - 30px);
+    margin: 10px 15px 18px 15px;
+}
+
+@media only screen and (orientation: portrait) and (max-width: 767px) {
+    #warning-message {
+        display: block;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    #warning-message {
+        display: none;
+    }
+}
+
+.alert .flex {
+    display: flex;
+}
+
+.alert .flex > div:first-of-type {
+    max-width: 70px;
+}
+
+.alert .flex > div:first-of-type img {
+    max-width: 60px;
+    margin: 0 15px 0 -10px;
+    filter: brightness(0) invert(1);
+}
+
+.alert-dismissible {
+    padding-right: 15px;
+}
+
+
+/* Main elements end */
+
+/*****************************************************************************
+ * Coin List
+ ****************************************************************************/
+i.list {
+    min-width: 16px;
+    margin-right: 7px;
+}
+
+div.alert {
+    height: calc(100% - 15px);
+}
+
+#intro .card {
+    display: inline-flex !important;
+    padding: 0;
+    height: 100%;
+}
+
+#intro .trades_intro .card-body {
+    padding: 0;
+}
+
+.card-body {
+    padding: 10px 15px;
+}
+
+.card-header {
+    padding: 10px 15px;
+}
+
+.card h4,
+.card h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+}
+
+.card h2 {
+    margin: -3px 0;
+    font-size: 25px;
+}
+
+.card-body.intro {
+    font-size: 15px;
+}
+
+.card-body a {
+    text-decoration: underline;
+    width: 100%;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.card-body a:last-of-type {
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 670px) {
+    .card-body.intro {
+        font-size: 17px;
+    }
+}
+
+#accordionHome {
+    padding: 0 15px 20px 15px;
+}
+
+#accordionHome .card-header {
+    padding: 0;
+}
+
+#accordionHome .card-header h4 {
+    padding: 0;
+    margin: 0;
+}
+
+#accordionHome .collapse {
+    background: #3a3f44;
+}
+
+/*
+div.alert-wrapper > div {
+    flex: 1 1 0px;
+} */
+
+div.coin-list-wrapper {
+    display: flex;
+    flex: 1 1 0px;
+    flex-wrap: wrap;
+}
+
+div.coin-list-wrapper > div {
+    text-align: center;
+    flex: 1 1 0px;
+    border: 1px solid rgba(0, 0, 0, .6);
+    border-right: none;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+div.coin-list-wrapper > div:last-of-type {
+    border-right: 1px solid rgba(0, 0, 0, .6);
+}
+
+div.coin-list-wrapper > div:hover {
+    background-color: rgba(255, 255, 255, .075);
+}
+
+div.coin-list-wrapper h3 {
+    display: block;
+    font-size: 1.341rem;
+    margin: 0;
+}
+
+div.coin-list-wrapper .active {
+    background-color: rgba(255, 255, 255, .075);
+}
+
+/* Coin List end */
+
+/*****************************************************************************
+ * Signal Table
+ ****************************************************************************/
+.signal-wrapper {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-top: 0;
+}
+
+.signals-table-wrapper {
+    width: 100%;
+    overflow-y: auto;
+    height: 380px;
+    display: none;
+}
+
+.signal-summary-wrapper {
+    width: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.signal-summary-wrapper h5 {
+    margin: 0 0 5px 0;
+}
+
+.signal-summary-wrapper h4 {
+    margin: 2px 4px;
+    padding: 0;
+}
+
+.signal-summary-wrapper span {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+@media only screen and (min-width: 670px) {
+    .signal-wrapper {
+        display: flex;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        border-top: 0;
+    }
+
+    .signals-table-wrapper {
+        min-width: 65%;
+        overflow-y: auto;
+        height: 573px;
+        display: inline;
+    }
+
+    .signal-summary-wrapper {
+        width: 35%;
+        border-right: 1px solid rgba(0, 0, 0, 0.6);
+        max-width: 300px;
+    }
+
+    .signal-summary-wrapper h5 {
+        margin: 57px 0 5px 0;
+    }
+}
+
+.signals-table-wrapper thead th {
+    position: sticky;
+    top: 0;
+    background: rgb(39, 43, 48);
+    padding-top: calc(.3rem + 1px);
+    border-top: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.signal-summary-wrapper .grid {
+    display: flex; /* establish flex container */
+    flex-wrap: wrap; /* enable flex items to wrap */
+    justify-content: space-around;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.signal-summary-wrapper .cell {
+    flex: 0 0 33.33%; /* don't grow, don't shrink, width */
+    outline: 1px solid rgba(0, 0, 0, 0.6);
+    background-color: rgb(39, 43, 48);
+}
+
+.signal-summary-wrapper .cell {
+    text-align: center;
+}
+
+/* Signal Table end */
+
+
+/*****************************************************************************
+ * Various other styles
+ ****************************************************************************/
+
+/* Various other styles end
+@media only screen and (min-width: 670px) {*/
+td.green {
+    color: green;
+}
+
+td.red {
+    color: red;
+}
+
+/* } */
+
+.navbar {
+    border-bottom: 0;
+    border-top: 0 !important;
+    width: 100%;
+    padding: 0 !important;
+}
+
+.navbar.navbar-default.navbar-fixed-top {
+    border-bottom: 1px solid rgba(0, 0, 0, .6) !important;
+}
+
+nav .navbar-brand {
+    text-transform: uppercase;
+    padding: 5px 0;
+}
+
+nav .navbar-brand img {
+    width: 45px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+ul.navbar-nav {
+    flex-grow: 1;
+}
+
+@media only screen and (min-width: 992px) {
+    nav .navbar-brand {
+        text-transform: uppercase;
+        padding: 0 45px 0 0;
+    }
+
+    nav ul {
+        display: flex;
+    }
+
+    nav ul li {
+        flex: 1 1 0px;
+    }
+
+    nav a.nav-link {
+        text-transform: uppercase;
+        min-width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.performance_home a {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.performance_home tr:first-of-type td {
+    border-top: none;
+}
+
+/* trades small */
+
+.trade-sm {
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, .6);
+    padding: 5px 15px;
+}
+
+.trade-sm:hover {
+    background-color: rgba(255, 255, 255, .075);
+}
+
+.trade-sm:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.trade-sm > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trade-sm .title {
+    font-size: 16px;
+}
+
+.trade-sm span.green {
+    color: green;
+}
+
+.trade-sm span.red {
+    color: red;
+}
+
+@media (max-width: 992px) {
+    .trade-sm:nth-of-type(3) {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .trade-sm:nth-of-type(4),
+    .trade-sm:nth-of-type(5) {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .trade-sm.less:nth-of-type(4) {
+        display: block;
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .trade-sm.less:nth-of-type(5) {
+        display: none;
+        margin-bottom: 1px;
+    }
+}
+
+@media (min-width: 1150px) {
+    .trade-sm.less:nth-of-type(3) {
+        border-bottom: none;
+    }
+
+    .trade-sm.less:nth-of-type(4),
+    .trade-sm.less:nth-of-type(5) {
+        display: none;
+    }
+}
+
+.form-signal label {
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+}
+
+@media (max-width: 630px) {
+    .rotate_wrapper {
+        height: 80vh;
+        width: calc(100vw - 5px);
+        display: block;
+        overflow-y: hidden;
+        min-height: 625px;
+        margin-bottom: 15px;
+    }
+
+    .rotate {
+        transform: rotate(90deg) translateY(-100%);
+        transform-origin: top left;
+        height: calc(100vw - 5px);
+        width: 80vh;
+    }
+}
+
+@media (min-width: 460px) and (max-width: 630px) {
+    .rotate .trades-table-wrapper {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

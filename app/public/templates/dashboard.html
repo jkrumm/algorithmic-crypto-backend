@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <div class="container-fluid mb-1 mb-md-3" id="intro">
+        <div class="row mx-auto">
+            <div class="col-md-8 mb-1 mb-md-3">
+                <div class="col-12 card text-white bg-primary">
+                    <div class="card-header"><h2>Welcome {{ userinfo['name'] }} to AlgorithmicCrypto.com</h2></div>
+                    <div class="card-body intro">
+                        Free highly profitable algorithmic trading signals optimized for the cryptocurrency
+                        market. Combining <i>stochastic momentum oscillators</i> with <i>volatility indices</i>
+                        as well as<i>RSI divergence</i> to signal breakouts and trend reversals.<br>Due to our
+                        success using this algorithm we want to share the signals with you. If there are more
+                        people following specific strategies they are getting even stronger.<br>In the future we
+                        want to enable automated trading for everybody until now join on Telegram signals.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-1 mb-md-3">
+                <div class="col-12 card text-white bg-primary performance_home">
+                    <div class="card-header"><h4>Performance</h4></div>
+                    <div class="card-body">
+                        <a href="#" class="mb-1"><i class="list fas fa-tachometer-alt"></i>Full performance
+                            analysis</a>
+                        <table class="table table-sm" style="margin-bottom: 0">
+                            <tr>
+                                <td>Daily Return</td>
+                                <td>5 %</td>
+                            </tr>
+                            <tr>
+                                <td>Win Rate</td>
+                                <td>5 %</td>
+                            </tr>
+                            <tr>
+                                <td>Ratio Win/Loss</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>Average Profit</td>
+                                <td>5 %</td>
+                            </tr>
+                            <tr>
+                                <td>Average Days</td>
+                                <td>5 D</td>
+                            </tr>
+                            <tr>
+                                <td>Total Trades</td>
+                                <td>200</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-12 card text-white bg-primary">
+                    <div class="card-header"><h4>Telegram and Twitter signals</h4></div>
+                    <div class="card-body">
+                        Instant notification of all signals and daily updates for the current trades.<br><br>
+                        <a href="https://twitter.com/algorithmicct" target="_blank"><i
+                                class="list fab fa-twitter"></i>Algorithmic
+                            Crypto Twitter</a>
+                        <a href="https://t.me/algorithmiccrypto" target="_blank"><i
+                                class="list fab fa-telegram"></i>Algorithmic
+                            Crypto Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-12 card text-white bg-primary">
+                    <div class="card-header"><h4>Donations</h4></div>
+                    <div class="card-body">All signals will remain free. Please support my work with a
+                        donation! Thankful for even the smallest donations.<br><br>
+                        <a href="#" data-toggle="modal" data-target="#btc_donation"><i
+                                class="list fab fa-bitcoin"></i>Bitcoin</a>
+                        <a href="#" data-toggle="modal" data-target="#eth_donation"><i
+                                class="list fab fa-ethereum"></i>Ethereum</a>
+                        <a href="https://paypal.me/johanneskrum" target="_blank"><i
+                                class="list fab fa-paypal"></i>Paypal</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-12 card text-white bg-primary performance_home">
+                    <div class="card-header"><h4>Contact and Feedback</h4></div>
+                    <div class="card-body">
+                        Send me a message on Telegram, the contact page or per mail. Check out and contribute on
+                        the
+                        Github
+                        project.<br><br>
+                        <a href="/contact"><i class="list fas fa-paper-plane"></i>Contact page</a>
+                        <a href="mailto:jkrumm@algorithmiccrypto.com" target="_blank"><i
+                                class="list fas fa-envelope"></i>Send
+                            mail</a>
+                        <a href="https://t.me/johanneskr" target="_blank"><i class="list fab fa-telegram"></i>Contact
+                            on
+                            Telegram</a>
+                        <a href="https://github.com/jkrumm/algorithmic-crypto-backend" target="_blank"><i
+                                class="list fab fa-github"></i>Github</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="logged-in-box auth0-box logged-in">
+        <img class="avatar" src="{{ userinfo['picture'] }}"/>
+        <h2>Welcome {{ userinfo['name'] }}</h2>
+        <pre>{{ userinfo }}</pre>
+        <pre>{{ userinfo_pretty }}</pre>
+        <a class="btn btn-primary btn-lg btn-logout btn-block" href="{{ url_for('public.setup') }}">
+            Setup exchange connection
+        </a>
+    </div>
+{% endblock %}

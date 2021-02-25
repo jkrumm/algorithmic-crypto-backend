@@ -16,6 +16,10 @@
     font-display: block;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: DIN, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -24,6 +28,30 @@ body {
     line-height: 24px;
     background-color: rgb(237, 240, 242);
 }
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4);
+}
+
 
 p {
     margin-bottom: 18px;
@@ -76,6 +104,11 @@ h3 {
     flex: 1;
 }
 
+section {
+    position: relative;
+    z-index: 5;
+}
+
 @media only screen and (min-width: 1050px) {
     body {
         font-size: 20px;
@@ -120,10 +153,15 @@ h3 {
 
 header {
     position: relative;
-    margin-bottom: 150px;
     height: 885px;
     overflow: hidden;
     z-index: 4;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+header.navbar-fixed-top {
+    margin-bottom: 140px;
 }
 
 header:before {
@@ -169,7 +207,7 @@ header .jumbo {
 header .jumbo p {
     color: #fff;
     font-size: 22px;
-    line-height: 27px;
+    line-height: 30px;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -180,7 +218,55 @@ main {
     z-index: 10;
 }
 
+nav.bp3-navbar {
+    position: relative;
+    transition: all 1s ease;
+    z-index: 100;
+    max-width: 1400px;
+    box-shadow: none;
+    border-top: 1px solid rgba(16, 22, 26, 0.2);
+    border-bottom: 1px solid rgba(16, 22, 26, 0.2);
+    padding: 0 20px;
+}
+
+nav.bp3-navbar.navbar-fixed-top {
+    position: fixed;
+    top:0;
+}
+
+nav .last-nav > a:first-of-type {
+    margin-left: auto;
+}
+
+nav .bp3-navbar-group.first-nav a:hover  {
+    color: #182026;
+    text-decoration: none;
+}
+
+nav .bp3-navbar-group.first-nav a {
+    display: flex;
+    color: #182026;
+}
+
+nav .bp3-navbar-group.second-nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav .bp3-navbar-group.second-nav .active {
+    background-color: rgba(167, 182, 194, 0.2);
+}
+
+nav img {
+    width: 27px;
+    margin-right: 10px;
+    position: relative;
+    top: -2px;
+}
+
 .intro {
+    padding-top: 80px;
+    margin-top: 20px;
     margin-bottom: 130px;
 }
 
@@ -249,16 +335,16 @@ main {
     bottom: 0;
     height: 100%;
     z-index: 1;
-    opacity: 0.5;
-background: rgb(124,95,17);
-background: linear-gradient(180deg, rgba(124,95,17,1) 0%, rgba(124,95,17,0.35) 100%);
+    opacity: 0.37;
+    background: rgb(124, 95, 17);
+    background: linear-gradient(180deg, rgba(124, 95, 17, 1) 0%, rgba(124, 95, 17, 0.35) 100%);
 }
 
 .welcome > div {
     position: relative;
     display: block;
     z-index: 2;
-    top: 48%;
+    top: 51%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
@@ -266,12 +352,15 @@ background: linear-gradient(180deg, rgba(124,95,17,1) 0%, rgba(124,95,17,0.35) 1
 
 .welcome h2 {
     color: #fff;
+    /* text-shadow: 1px 1px 2px rgba(0,0,0, 0.25); */
+    text-shadow: 0 0 7px rgba(0,0,0, 0.15);
 }
 
 .welcome > div > div {
     max-width: 800px;
     text-align: center;
     color: #fff;
+   text-shadow: 1px 1px 7px rgba(0,0,0, 0.32);
 }
 
 .welcome .exchanges {
@@ -296,7 +385,8 @@ background: linear-gradient(180deg, rgba(124,95,17,1) 0%, rgba(124,95,17,0.35) 1
 }
 
 .bots {
-    margin: 115px 0 130px 0;
+    padding-top: 70px;
+    margin: 30px 0 100px 0;
 }
 
 .bots > div {
@@ -353,12 +443,12 @@ table tr.border-bottom {
 }
 
 .product {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     padding: 0 30px;
 }
 
 .product > div {
-    padding: 0 20px;
+    padding: 0 25px;
 }
 
 .ui {
@@ -369,6 +459,10 @@ table tr.border-bottom {
     display: block;
     width: calc(100% - 120px);
     margin: 0 auto;
+}
+
+#pricing {
+    padding-bottom: 100px;
 }
 
 #pricing > p {
@@ -449,7 +543,7 @@ img.coinbase {
 
 #pricing .action {
     display: block;
-    margin: 0 auto 100px auto;
+    margin: 0 auto 0 auto;
     border: 3px solid rgba(16, 107, 163, 0.6);
     padding: 15px 30px;
 }
@@ -486,7 +580,7 @@ footer h1 {
 }
 
 footer .bottom {
-    z-index: -1;
+    z-index: 1;
     position: fixed;
     bottom: 10px;
     left: 50%;

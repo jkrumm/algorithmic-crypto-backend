@@ -11,13 +11,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <!-- /meta -->
 
-    <!-- styles
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"></script>-->
-
+    <link type="text/css" rel="stylesheet" href="/static/css/normalize.min.css">
     <link type="text/css" rel="stylesheet" href="/static/css/nouislider.min.css">
     <link type="text/css" rel="stylesheet" href="/static/js/libs/slick/slick.css">
     <link type="text/css" rel="stylesheet" href="/static/js/libs/slick/slick-theme.css">
@@ -38,21 +32,54 @@
     <meta name="theme-color" content="#333333">
 
 </head>
-<body>
+<body id="container">
 <!-- Wrap all page content here -->
 <div id="wrap">
-    <header>
-
-        <div class="jumbo">
-            <h1>Algorithmic Crypto</h1>
-            <p>Highly profitable trading automation optimized for the cryptocurrency market. <br>
-                Utilizing sophisticated and mathematical proven algorithms to outperform<br>
-                the best performing assets of this century.</p>
-        </div>
+    <header id="hero">
+        <a href="/">
+            <div class="jumbo">
+                <h1>Algorithmic Crypto</h1>
+                <p>Highly profitable trading automation optimized for the cryptocurrency market. <br>
+                    Utilizing sophisticated and mathematical proven algorithms to outperform<br>
+                    the best performing assets of this century.</p>
+            </div>
+        </a>
     </header>
+    <nav class="bp3-navbar" id="navbar">
+        <div class="flexbox" style="margin: 0 auto; max-width: 1400px;">
+            <div class="bp3-navbar-group first-nav">
+                <a href="/">
+                    <img src="/static/icon/apple-touch-icon-60x60-precomposed.png" alt="Logo">
+                    <div class="bp3-navbar-heading">Algorithmic Crypto</div>
+                </a>
+            </div>
+            <div class="bp3-navbar-group second-nav">
+                <a href="#intro">
+                    <button class="bp3-button bp3-minimal" id="intro-nav">Intro</button>
+                </a>
+                <span class="bp3-navbar-divider"></span>
+                <a href="#algorithms">
+                    <button class="bp3-button bp3-minimal" id="algorithms-nav">Algorithms</button>
+                </a>
+                <span class="bp3-navbar-divider"></span>
+                <a href="#features">
+                    <button class="bp3-button bp3-minimal" id="features-nav">Features</button>
+                </a>
+                <span class="bp3-navbar-divider"></span>
+                <a href="#pricing">
+                    <button class="bp3-button bp3-minimal" id="pricing-nav">Pricing</button>
+                </a>
+            </div>
+            <div class="bp3-navbar-group last-nav">
+                <a href="/login"><button class="bp3-button bp3-minimal">Register</button></a>
+                <span class="bp3-navbar-divider"></span>
+                <a href="/login"><button class="bp3-button bp3-minimal">Login</button></a>
+            </div>
+        </div>
+    </nav>
     <!-- Begin page content -->
     <main id="content" role="main">
-        <section class="intro">
+        <section id="intro" class="intro">
             <div class="slick-responsive">
                 <div>
                     <h3>Win Rate</h3>
@@ -95,9 +122,6 @@
                         stopped out by a sudden drop? Automate your trading and become much more profitable!<br>
                         Just like investment funds have been doing for years.
                     </p>
-                    <p>
-                        Connecting to your exchange we are only allowed to trade not to withdraw. You stay safe!
-                    </p>
                     <button class="action bp3-button bp3-large bp3-outlined bp3-minimal bp3-intent-primary"
                             href="/login">
                         <h3>Connect Your Exchange</h3>
@@ -110,19 +134,9 @@
                 </div>
             </div>
         </section>
-        <section class="bots">
-            <h2>Available Algorithms</h2>
+        <section id="algorithms" class="bots">
+            <h2>Algorithms</h2>
             <p>Backtesting results since 2016</p>
-            <!-- <div class="bp3-tabs .bp3-large">
-                <ul class="bp3-tab-list" role="tablist">
-                    <li class="bp3-tab" role="tab" aria-selected="true">Selected tab</li>
-                    <li class="bp3-tab" role="tab">Another tab</li>
-                    <li class="bp3-tab" role="tab" aria-disabled="true">Disabled tab</li>
-                </ul>
-                <div class="bp3-tab-panel" role="tabpanel">Selected panel</div>
-                <div class="bp3-tab-panel" role="tabpanel" aria-hidden="true">Another panel</div>
-                <div class="bp3-tab-panel" role="tabpanel" aria-hidden="true">Disabled panel</div>
-            </div> -->
             <div>
                 <div>
                     <h3>BTC</h3>
@@ -267,7 +281,7 @@
             <h1>Algorithmic Crypto</h1>
             <div class="bottom flexbox">
                 <div>
-                    <p>© 2021 Algorithmic Crypto</p>
+                    <a href="/">© 2021 Algorithmic Crypto</a>
                 </div>
                 <div>
                     <a href="#">Impressum</a>

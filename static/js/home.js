@@ -1,4 +1,72 @@
 $(function () {
+    var hero = $('#hero');
+    var navbar = $('#navbar');
+    var intro = $('#intro');
+    var introNav = $('#intro-nav');
+    var algorithms = $('#algorithms');
+    var algorithmsNav = $('#algorithms-nav');
+    var features = $('#features');
+    var featuresNav = $('#features-nav');
+    var pricing = $('#pricing');
+    var pricingNav = $('#pricing-nav');
+    var top = navbar.position().top;
+    $(window).scroll(function () {
+        var windowpos = $(window).scrollTop();
+        console.log(windowpos)
+        var introTop = intro.position().top + 935;
+        var algorithmsTop = algorithms.position().top + 930;
+        console.log(algorithmsTop)
+        var featuresTop = features.position().top + 950;
+        var pricingTop = pricing.position().top + 900;
+        console.log(pricingTop)
+
+        // if win >= navbar and not already a sticky
+        if (windowpos >= top && !navbar.hasClass("navbar-fixed-top")) {
+            hero.addClass("navbar-fixed-top");
+            navbar.addClass("navbar-fixed-top");
+
+            // if win <= navbar and is a sticky
+        } else if (windowpos <= top && navbar.hasClass("navbar-fixed-top")) {
+            hero.removeClass("navbar-fixed-top");
+            navbar.removeClass("navbar-fixed-top");
+        }
+
+        if (introTop > windowpos) {
+            introNav.removeClass('active');
+            algorithmsNav.removeClass('active');
+            featuresNav.removeClass('active');
+            pricingNav.removeClass('active');
+            return;
+        }
+        if (introTop < windowpos && windowpos < algorithmsTop) {
+            introNav.addClass('active');
+            algorithmsNav.removeClass('active');
+            featuresNav.removeClass('active');
+            pricingNav.removeClass('active');
+            return;
+        }
+        if (algorithmsTop < windowpos && windowpos < featuresTop) {
+            introNav.removeClass('active');
+            algorithmsNav.addClass('active');
+            featuresNav.removeClass('active');
+            pricingNav.removeClass('active');
+            return;
+        }
+        if (featuresTop < windowpos && windowpos < pricingTop) {
+            introNav.removeClass('active');
+            algorithmsNav.removeClass('active');
+            featuresNav.addClass('active');
+            pricingNav.removeClass('active');
+            return;
+        }
+        if (pricingTop < windowpos) {
+            introNav.removeClass('active');
+            algorithmsNav.removeClass('active');
+            featuresNav.removeClass('active');
+            pricingNav.addClass('active');
+        }
+    });
+
     const slider = document.getElementById('slider');
 
     noUiSlider.create(slider, {
@@ -33,7 +101,7 @@ $(function () {
         autoplay: true,
         autoplaySpeed: 0,
         speed: 3500,
-        cssEase:'linear',
+        cssEase: 'linear',
         infinite: true,
         focusOnSelect: false,
         pauseOnHover: false,
@@ -71,6 +139,4 @@ $(function () {
             // instead of a settings object
         ]
     });
-
-
 });

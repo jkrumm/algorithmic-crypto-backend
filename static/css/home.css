@@ -29,31 +29,6 @@ body {
     background-color: rgb(237, 240, 242);
 }
 
-/* Let's get this party started */
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(255, 0, 0, 0.8);
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-}
-
-::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255, 0, 0, 0.4);
-}
-
-
 p {
     margin-bottom: 18px;
 }
@@ -252,6 +227,7 @@ nav .bp3-navbar-group.first-nav a:hover {
 nav .bp3-navbar-group.first-nav a {
     display: flex;
     color: #182026;
+    text-decoration: none;
 }
 
 nav .bp3-navbar-group.second-nav {
@@ -314,6 +290,10 @@ nav img {
     border: 2px solid #fff;
     padding: 12px 25px;
     margin-top: 40px;
+}
+
+.welcome a {
+    text-decoration: none;
 }
 
 .action h3 {

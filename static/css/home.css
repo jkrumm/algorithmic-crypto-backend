@@ -154,7 +154,7 @@ header:before {
     top: 0;
     height: 100%;
     z-index: 0;
-    background-image: url("../img/header.jpg");
+    background-image: url("https://ik.imagekit.io/jtrj8won4m0/tr:w-2000/header_5y51XjUTYXTX.jpg");
     background-position: center top;
     background-size: auto 950px;
     background-attachment: fixed;
@@ -319,7 +319,7 @@ nav img {
     left: 0;
     bottom: 0;
     height: 100%;
-    background-image: url("../img/building.jpg");
+    background-image: url("https://ik.imagekit.io/jtrj8won4m0/tr:w-2000/building_QFUckFHN6.jpg");
     background-position: center bottom;
     background-size: 100% auto;
     -webkit-filter: saturate(0.9) brightness(0.9);
@@ -577,8 +577,8 @@ footer:before {
     bottom: 0;
     height: 100%;
     z-index: -2;
-    background-image: url("../img/beach.jpg");
-    background-position: center -200px;
+    background-image: url("https://ik.imagekit.io/jtrj8won4m0/tr:w-2000/beach_pPkKl3lxdv.jpg");
+    background-position: center 570px;
     background-size: 1400px auto;
     background-attachment: fixed;
     background-repeat: no-repeat;

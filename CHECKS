@@ -1,0 +1,4 @@
+WAIT=15
+TIMEOUT=60
+ATTEMPTS=5
+/status Running!
